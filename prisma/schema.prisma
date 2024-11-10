@@ -14,42 +14,37 @@ datasource db {
 }
 
 model Book {
-  bookId          String     @id @default(uuid())
-  title           String     @unique
+  bookId          String         @id @default(uuid())
+  title           String         @unique
   genre           String
   publishedYear   Int
-  totalCopies     Int    
-  availableCopies Int 
+  totalCopies     Int
+  availableCopies Int
+  borrowRecords   BorrowRecord[]
 
   @@map("books")
 }
 
-// model User {
-//   id                 String     @id @default(uuid())
-//   email              String     @unique
-//   password           String
-//   role               UserRole
-//   needPasswordChange Boolean    @default(true)
-//   status             UserStatus @default(ACTIVE)
-//   createdAt          DateTime   @default(now())
-//   updatedAt          DateTime   @updatedAt
-//   admin              Admin?
+model Member {
+  memberId       String         @id @default(uuid())
+  email          String         @unique
+  name           String
+  phone          String
+  membershipDate DateTime       @default(now())
+  borrowRecords  BorrowRecord[]
 
-//   @@map("users")
-// }
+  @@map("members")
+}
 
-// model Admin {
-//   id            String   @id @default(uuid())
-//   name          String
-//   email         String   @unique
-//   profilePhoto  String?
-//   contactNumber String
-//   isDeleted     Boolean  @default(false)
-//   createdAt     DateTime @default(now())
-//   updatedAt     DateTime @updatedAt
+model BorrowRecord {
+  borrowId   String    @id @default(uuid())
+  borrowDate DateTime  @default(now())
+  returnDate DateTime?
+  bookId     String
+  memberId   String
+  book       Book      @relation(fields: [bookId], references: [bookId])
+  member     Member    @relation(fields: [memberId], references: [memberId])
 
-//   user User   @relation(fields: [email], references: [email])
-//   Book Book[]
+  @@map("borrowRecords")
+}
 
-//   @@map("admins")
-// }

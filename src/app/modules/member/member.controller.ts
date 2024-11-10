@@ -39,7 +39,7 @@ const getMember = catchAsync(async (req: Request, res: Response) => {
 
 const updateMember = catchAsync(async (req: Request, res: Response) => {
   const memberId = req.params.memberId;
-  const result = await MemberServices.updateMemberIntoDB(memberId);
+  const result = await MemberServices.updateMemberIntoDB(memberId, req.body);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,

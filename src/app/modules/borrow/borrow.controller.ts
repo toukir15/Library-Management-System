@@ -14,17 +14,17 @@ const borrowBook = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const returnBook = catchAsync(async (req: Request, res: Response) => {
-  const result = await BorrowServices.returnBook(req.body);
+const getOverdueBorrowedBooks = catchAsync(async (req: Request, res: Response) => {
+  const result = await BorrowServices.getOverdueBorrowedBooksFromDB();
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Return book successfully!",
+    message: "Retrive overdue borrowed books successfully!",
     data: result,
   });
 });
 
 export const BorrowControllers = {
   borrowBook,
-  returnBook,
+  getOverdueBorrowedBooks
 };
