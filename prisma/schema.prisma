@@ -13,44 +13,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id                 String     @id @default(uuid())
-  email              String     @unique
-  password           String
-  role               UserRole
-  needPasswordChange Boolean    @default(true)
-  status             UserStatus @default(ACTIVE)
-  createdAt          DateTime   @default(now())
-  updatedAt          DateTime   @updatedAt
-  admin              Admin?
+model Book {
+  bookId          String     @id @default(uuid())
+  title           String     @unique
+  genre           String
+  publishedYear   Int
+  totalCopies     Int    
+  availableCopies Int 
 
-  @@map("users")
+  @@map("books")
 }
 
-model Admin {
-  id            String   @id @default(uuid())
-  name          String
-  email         String   @unique
-  profilePhoto  String?
-  contactNumber String
-  isDeleted     Boolean  @default(false)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+// model User {
+//   id                 String     @id @default(uuid())
+//   email              String     @unique
+//   password           String
+//   role               UserRole
+//   needPasswordChange Boolean    @default(true)
+//   status             UserStatus @default(ACTIVE)
+//   createdAt          DateTime   @default(now())
+//   updatedAt          DateTime   @updatedAt
+//   admin              Admin?
 
-  user User @relation(fields: [email], references: [email])
+//   @@map("users")
+// }
 
-  @@map("admins")
-}
+// model Admin {
+//   id            String   @id @default(uuid())
+//   name          String
+//   email         String   @unique
+//   profilePhoto  String?
+//   contactNumber String
+//   isDeleted     Boolean  @default(false)
+//   createdAt     DateTime @default(now())
+//   updatedAt     DateTime @updatedAt
 
-enum UserRole {
-  SUPER_ADMIN
-  ADMIN
-  DOCTOR
-  PATIENT
-}
+//   user User   @relation(fields: [email], references: [email])
+//   Book Book[]
 
-enum UserStatus {
-  ACTIVE
-  BLOCKED
-  DELETED
-}
+//   @@map("admins")
+// }

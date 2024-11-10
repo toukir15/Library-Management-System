@@ -1,21 +1,39 @@
-const createBookIntoDB = async (payload: any) => {
-    console.log("create book")
+import { Book } from "@prisma/client";
+import prisma from "../../../shared/prisma";
+
+const createBookIntoDB = async (payload: Book) => {
+    const result = await prisma.book.create({
+        data: payload
+    })
+    return result   
 };
 
 const getAllBookFromDB = async () => {
-    console.log("get books")
+    const result = await prisma.book.findMany() 
+    return result
 };
 
 const getBookFromDB = async (id: string) => {
-    console.log("get book")
+    const result = await prisma.book.findUniqueOrThrow({
+        where: { bookId: id }
+    });
+    return result;
 };
 
-const updateBookIntoDB = async (id: string) => {
-    console.log("update book")
+
+const updateBookIntoDB = async (id: string, payload: Partial<Book>) => {
+    const result = await prisma.book.update({
+        where: { bookId: id },
+        data: payload
+    });
+    return result;
 };
 
 const deleteBookFromDB = async (id: string) => {
-    console.log("delete book")
+   const result = await prisma.book.delete({
+    where: {bookId: id}
+})
+return result
 };
 
 export const BookServices = {

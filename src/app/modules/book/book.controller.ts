@@ -25,7 +25,7 @@ const getAllBooks = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getBook = catchAsync(async (req: Request, res: Response) => {
-    const bookId = req.params.updateBookIntoDB
+    const bookId = req.params.bookId
     const result = await BookServices.getBookFromDB(bookId);
     sendResponse(res, {
       statusCode: httpStatus.OK,
@@ -36,8 +36,8 @@ const getBook = catchAsync(async (req: Request, res: Response) => {
 });
 
 const updateBook = catchAsync(async (req: Request, res: Response) => {
-    const bookId = req.params.updateBookIntoDB
-    const result = await BookServices.updateBookIntoDB(bookId);
+    const bookId = req.params.bookId
+    const result = await BookServices.updateBookIntoDB(bookId, req.body);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       success: true,
@@ -47,7 +47,7 @@ const updateBook = catchAsync(async (req: Request, res: Response) => {
 });
 
 const deleteBook = catchAsync(async (req: Request, res: Response) => {
-    const bookId = req.params.updateBookIntoDB
+    const bookId = req.params.bookId
     const result = await BookServices.deleteBookFromDB(bookId);
     sendResponse(res, {
       statusCode: httpStatus.OK,
