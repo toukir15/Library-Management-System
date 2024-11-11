@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "prod": "NODE_ENV=production node ./dist/server.js",
     "migrate": "npx prisma migrate dev --name init",
     "build": "tsc"
+
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
