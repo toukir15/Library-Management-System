@@ -1,46 +1,66 @@
-# PH HealthCare Server
 
-Welcome to the backend repository for PH HealthCare, a tutorial project developed as part of the "Level 2 Web Development Course" offered by Programming Hero.
+# 📚 Library Management System API
 
-This repository contains the backend codebase responsible for handling server-side logic, database management, and communication between different system components.
+The Library Management System API is a backend service developed to streamline and manage library operations, enabling library staff and members to handle books, memberships, and borrowing activities efficiently. This API provides a structured set of endpoints for CRUD operations on books, members, and borrow records, with specialized functionality to support borrowing and returning books. Unique identifiers are managed using UUIDs for secure and reliable identification across the system.
 
-<!-- ## Table of Contents
-- [PH HealthCare Backend](#ph-healthcare-backend)
-  - [Table of Contents](#table-of-contents)
-  - [Technologies Used](#technologies-used)
-  - [Features](#features)
-  - [Installation and Setup](#installation-and-setup)
-  - [Usage](#usage)
-  - [API Endpoints](#api-endpoints)
-  - [Contributing](#contributing)
-  - [License](#license) -->
+## 🔧 Key Technologies
 
-<!-- ## Technologies Used
-- **Node.js**: Runtime environment for executing JavaScript code.
-- **Express.js**: Web application framework for building APIs and handling HTTP requests.
-- **Prisma**: ORM (Object-Relational Mapping) tool for database management.
-- **PostgreSQL**: Relational database management system.
-- **WEB RTC (Agora.io)**: Third-party service for real-time communication between users.
-- **JWT**: JSON Web Tokens for secure authentication and authorization.
-- **bcrypt**: Library for hashing passwords.
-- **nodemailer**: Library for sending email notifications. -->
+- **🔑 UUIDs**: Ensures unique identification across all tables for data integrity.
+- **🔗 RESTful API Structure**: Follows REST conventions for consistency and easy integration.
+- **🛠️ Prisma ORM**: Used for database interaction, providing an intuitive and type-safe way to interact with PostgreSQL.
+- **🗄️ PostgreSQL**: A relational database used for efficient data management of books, members, and borrow records.
 
-<!-- ## Features
-- **User Authentication and Authorization**: Secure authentication using JWT tokens.
-- **User Management**: CRUD operations for managing user accounts (Admin, Doctor, Patient).
-- **Appointment Management**: Create, update, and delete appointments.
-- **Real-time Communication**: Integration with WEB RTC for real-time communication between doctors and patients.
-- **Prescription Management**: Create, update, and delete prescriptions.
-- **Email Notifications**: Send email notifications for appointment confirmations, invoices, and prescription delivery. -->
+## ⚙️ Setup Instructions
 
-## Installation and Setup
-1. Clone this repository: `git clone <repository_url>`
-2. Install dependencies: `npm install`
-3. Set up the environment variables by creating a `.env` file and filling in the required variables based on the provided `.env.example` file.
-4. Run the database migrations: `npx prisma migrate dev`
-5. Start the server: `npm run dev`
+Follow these steps to install and run the application:
+
+1. **📥 Download the Code**:
+   - You can either download the ZIP file from the repository and extract it, or use the following command to clone the repository via the CLI:
+     ```bash
+     git clone <repository-url>
+     ```
+
+2. **📂 Navigate to the Project Directory**:
+   ```bash
+   cd <project-directory>
+
+   ```
+
+3. **📦 Inastall packages**:
+   ```bash
+   npm install
+    ```
+3. **▶️ Locally run the project**:
+   ```bash
+   npm run dev
+    ```
+
+## 🌟 Key Features & Functionality
+ 
+- **📚 Book Management**:
+  - Add, view, update, and delete books in the library catalog, with information such as bookId, title, genre, publishedYear, totalCopies,  and availableCopies.
+
+- **👥 Member Management**:
+ - Add, view, update, and delete books in the library catalog, with information such as memberId, name, email, phone, and membershipDate.
+
+- **🔄 Borrowing System**:
+  - Borrow and return books.
+  - Automatically update book or returning.
+  - Track due dates for borrowed books, and identify overdue returns.
+
+- **⏰ Overdue Tracking**:
+  - Track borrowed books that have not been returned within 14 days.
+
+- **💾 Database Integration with Prisma and PostgreSQL**:
+  - Utilize Prisma ORM for efficient, type-safe database interaction with a PostgreSQL database backend.
+  - Ensure reliable data management of books, members, and borrow records, with UUIDs for unique identification.
+
+- **🌐 RESTful API Structure**:
+  - Follows RESTful principles for clear and consistent endpoints, making the API easy to integrate and extend.
+
+These features provide a complete solution for managing library operations, supporting library staff in tracking books, members, and borrowing activities efficiently.
 
 
-### API Documentation: https://documenter.getpostman.com/view/26694209/2sA2xjyWRv
+
 
 
